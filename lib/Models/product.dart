@@ -14,4 +14,20 @@ class Product {
     required this.price,
     required this.image,
   });
+
+  @override
+  String toString() {
+    return id +
+        ',' +
+        title +
+        ',' +
+        description +
+        ',' +
+        category +
+        ',' +
+        price.toString() +
+        ',' +
+        image +
+        '\n';
+  }
 }
