@@ -1,3 +1,4 @@
+import 'package:ennachat_redwan_ecom_app/Style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -27,11 +28,11 @@ class _LoadingState extends State<Loading> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body:Center(
         child: SpinKitChasingDots(
-          color: Colors.red,
+          color: Style.primaryColor,
           size: 50.0,
         ),
       ),

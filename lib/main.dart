@@ -23,7 +23,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ennachat Shop',
-      theme: ThemeData(fontFamily: 'Fredoka', primaryColor: Style.primaryColor),
+      theme: ThemeData(
+        fontFamily: 'Fredoka',
+      ),
       initialRoute: Loading.routeName,
       routes: {
         Loading.routeName: (_) => const Loading(),

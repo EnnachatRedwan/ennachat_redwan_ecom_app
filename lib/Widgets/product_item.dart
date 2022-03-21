@@ -3,21 +3,26 @@ import '../Models/product.dart';
 import './product_details.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({Key? key, required this.prd}) : super(key: key);
+  const ProductItem({Key? key, required this.prd, required this.index})
+      : super(key: key);
 
   final Product prd;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => ProductsDetails(prd: prd)));
+            .push(MaterialPageRoute(builder: (_) => ProductsDetails(prd: prd,index:index)));
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: GridTile(
-          child: Image.network(prd.image),
+          child: Hero(
+            tag: index,
+            child: Image.network(prd.image),
+          ),
           footer: GridTileBar(
             backgroundColor: Colors.black87,
             leading: Text(

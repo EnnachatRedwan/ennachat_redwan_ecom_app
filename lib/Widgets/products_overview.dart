@@ -31,7 +31,7 @@ class ProductsOverview extends StatelessWidget {
             "Products",
             style: TextStyle(
               color: Style.textColor,
-              fontSize: 35,
+              fontSize: 40,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -43,12 +43,13 @@ class ProductsOverview extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 5),
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 300,
-                    childAspectRatio: 3 / 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10),
+                  maxCrossAxisExtent: 300,
+                  childAspectRatio: 3 / 3,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
                 itemBuilder: (ctx, i) =>
-                    ProductItem(prd: prd.itemsByCategory()[i]),
+                    ProductItem(prd: prd.itemsByCategory()[i],index:i),
                 itemCount: prd.itemsByCategory().length,
               ),
             ),

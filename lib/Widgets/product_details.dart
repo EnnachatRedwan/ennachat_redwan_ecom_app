@@ -3,11 +3,13 @@ import '../Models/product.dart';
 import '../Style/style.dart';
 
 class ProductsDetails extends StatelessWidget {
-  const ProductsDetails({Key? key, required this.prd}) : super(key: key);
+  const ProductsDetails({Key? key, required this.prd, required this.index})
+      : super(key: key);
 
   static const String routeName = '/productsDetails';
 
   final Product prd;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +27,12 @@ class ProductsDetails extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Image.network(
-                  prd.image,
-                  fit: BoxFit.cover,
+                Hero(
+                  tag: index,
+                  child: Image.network(
+                    prd.image,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ],
             ),
@@ -65,14 +70,21 @@ class ProductsDetails extends StatelessWidget {
                         color: Style.primaryColor,
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      child: const Center(
-                        child: Text(
-                          'Add to cart',
-                          style: TextStyle(color: Colors.white, fontSize: 30),
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.shopping_cart,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            'Add to cart',
+                            style: TextStyle(color: Colors.white, fontSize: 30),
+                          ),
+                        ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

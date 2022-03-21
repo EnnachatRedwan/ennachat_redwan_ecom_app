@@ -142,7 +142,10 @@ class _AppContainerState extends State<AppContainer> {
         body: const ProductsOverview(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
-          child: const FaIcon(FontAwesomeIcons.store),
+          child: const FaIcon(
+            FontAwesomeIcons.store,
+            color: Colors.white,
+          ),
           backgroundColor: Style.primaryColor,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
