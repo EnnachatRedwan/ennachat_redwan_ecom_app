@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: Loading.routeName,
       routes: {
         Loading.routeName: (_) => const Loading(),
-        AppContainer.routeName: (_) => const AppContainer()
+        AppContainer.routeName: (_) => const AppContainer(),
       },
     );
   }
