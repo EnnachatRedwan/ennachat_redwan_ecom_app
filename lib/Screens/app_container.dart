@@ -78,7 +78,7 @@ class _AppContainerState extends State<AppContainer> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'EN Shop',
+                  'Ennachat Shop',
                   style: TextStyle(
                     color: Style.primaryColor,
                     fontSize: 30,

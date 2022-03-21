@@ -44,12 +44,12 @@ class ProductsOverview extends StatelessWidget {
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 300,
-                  childAspectRatio: 3 / 3,
+                  childAspectRatio: 1,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),
                 itemBuilder: (ctx, i) =>
-                    ProductItem(prd: prd.itemsByCategory()[i],index:i),
+                    ProductItem(prd: prd.itemsByCategory()[i], index: i),
                 itemCount: prd.itemsByCategory().length,
               ),
             ),

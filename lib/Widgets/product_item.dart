@@ -13,8 +13,8 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => ProductsDetails(prd: prd,index:index)));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => ProductsDetails(prd: prd, index: index)));
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
