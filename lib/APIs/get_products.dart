@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import '../Models/product.dart';
 
-class ProductsProvider {
+class ProductsProvider{
   static List<Product> products = [];
 
   Future<void> getProducts() async {

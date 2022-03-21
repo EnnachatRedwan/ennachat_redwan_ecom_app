@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../APIs/get_products.dart';
-import './products_overview.dart';
+import './app_container.dart';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _LoadingState extends State<Loading> {
   void waitData() async {
     var prdp = ProductsProvider();
     await prdp.getProducts();
-    Navigator.of(context).pushReplacementNamed(ProductsScreen.routeName);
+    Navigator.of(context).pushReplacementNamed(AppContainer.routeName);
   }
 
   @override
@@ -27,11 +27,11 @@ class _LoadingState extends State<Loading> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      body: const Center(
-        child: SpinKitCubeGrid(
-          color: Colors.white,
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      body:Center(
+        child: SpinKitChasingDots(
+          color: Colors.red,
           size: 50.0,
         ),
       ),

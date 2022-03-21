@@ -1,8 +1,8 @@
+import 'package:ennachat_redwan_ecom_app/Style/style.dart';
 import 'package:flutter/material.dart';
 
 import './Screens/loading.dart';
-import './Screens/products_overview.dart';
-import './APIs/get_products.dart';
+import './Screens/app_container.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,14 +21,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
+      debugShowCheckedModeBanner: false,
+      title: 'Ennachat Shop',
+      theme: ThemeData(fontFamily: 'Fredoka', primaryColor: Style.primaryColor),
       initialRoute: Loading.routeName,
       routes: {
         Loading.routeName: (_) => const Loading(),
-        ProductsScreen.routeName: (_) => const ProductsScreen()
+        AppContainer.routeName: (_) => const AppContainer()
       },
     );
   }
