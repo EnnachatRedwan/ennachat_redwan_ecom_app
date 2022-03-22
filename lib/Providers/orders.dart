@@ -7,11 +7,14 @@ class Orders with ChangeNotifier {
   final List<Order> _orders = [];
 
   List<Order> get orders {
-    return [..._orders];
+    return [..._orders.reversed];
   }
 
   void addOrder(Cart cart) {
-    _orders.add(Order(items: cart.cartItems, totalPrice: cart.totalPrice,date: DateTime.now()));
+    _orders.add(Order(
+        items: cart.cartItems,
+        totalPrice: cart.totalPrice,
+        date: DateTime.now()));
     notifyListeners();
   }
 
@@ -19,5 +22,4 @@ class Orders with ChangeNotifier {
     _orders.remove(order);
     notifyListeners();
   }
-
 }

@@ -21,7 +21,7 @@ class Cart with ChangeNotifier {
   }
 
   List<CartItem> get cartItems {
-    return _items.values.toList();
+    return _items.values.toList().reversed.toList();
   }
 
   void deleteItem(Product prd) {
