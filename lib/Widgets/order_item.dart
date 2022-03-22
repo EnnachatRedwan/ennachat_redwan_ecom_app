@@ -98,7 +98,7 @@ class _OrderItemState extends State<OrderItem> {
                       trailing: Text(
                         '\$${e.totalPrice}',
                         style: const TextStyle(
-                            color: Colors.greenAccent,
+                            color: Colors.black45,
                             fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),

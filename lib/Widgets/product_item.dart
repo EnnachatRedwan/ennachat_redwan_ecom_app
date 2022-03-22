@@ -30,9 +30,7 @@ class ProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var cart = Provider.of<Cart>(context);
     return GestureDetector(
-      onTap: () {
-        pushDetails(context, cart);
-      },
+      onTap: () {pushDetails(context,cart);},
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: GridTile(
