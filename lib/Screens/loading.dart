@@ -30,10 +30,29 @@ class _LoadingState extends State<Loading> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body:Center(
-        child: SpinKitChasingDots(
-          color: Style.primaryColor,
-          size: 50.0,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Ennachat Redwan',
+              style: TextStyle(
+                  color: Style.primaryColor,
+                  fontSize: 30,
+),
+            ),
+            Text(
+              'E-SHOP',
+              style: TextStyle(
+                  color: Style.primaryColor,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold),
+            ),
+            SpinKitChasingDots(
+              color: Style.primaryColor,
+              size: 50.0,
+            ),
+          ],
         ),
       ),
     );
