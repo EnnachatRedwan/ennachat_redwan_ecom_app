@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../Providers/cart.dart';
 import '../Style/style.dart';
+import '../Providers/orders.dart';
 
 class CartBill extends StatelessWidget {
   const CartBill({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class CartBill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cart = Provider.of<Cart>(context);
+    var orders = Provider.of<Orders>(context);
     return Container(
       padding: const EdgeInsets.all(20.0),
       margin: const EdgeInsets.all(20),
@@ -46,7 +48,12 @@ class CartBill extends StatelessWidget {
             ],
           ),
           TextButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              if (cart.items.isNotEmpty) {
+                orders.addOrder(cart);
+                cart.clearCart();
+              }
+            },
             icon: const Icon(
               Icons.credit_card,
               color: Colors.white,

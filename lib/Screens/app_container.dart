@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../Style/style.dart';
 import '../Widgets/products_overview.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../Providers/products.dart';
 import '../Providers/cart.dart';
 import '../Widgets/Cart_overview.dart';
+import '../Providers/orders.dart';
+import '../Widgets/orders_screen.dart';
 
 class AppContainer extends StatefulWidget {
   const AppContainer({Key? key}) : super(key: key);
@@ -28,8 +30,8 @@ class _AppContainerState extends State<AppContainer> {
     switch (index) {
       case 0:
         return const CartOverview();
-      case 2:
-        return const ProductsOverview();
+      case 1:
+        return const OrdersSceen();
       default:
         return const ProductsOverview();
     }
@@ -50,6 +52,9 @@ class _AppContainerState extends State<AppContainer> {
         ChangeNotifierProvider(
           create: (_) => Cart(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => Orders(),
+        )
       ],
       child: Scaffold(
         key: _scaffoldKey,

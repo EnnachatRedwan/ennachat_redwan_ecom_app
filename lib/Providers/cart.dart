@@ -29,6 +29,11 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
+  void clearCart() {
+    _items.clear();
+    notifyListeners();
+  }
+
   void addProduct(Product prd) {
     _items.putIfAbsent(prd.id, () => CartItem(prd: prd));
     _items[prd.id]!.quantity++;
