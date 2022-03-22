@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import '../Models/product.dart';
 import '../Style/style.dart';
+import '../Providers/cart.dart';
 
 class ProductsDetails extends StatelessWidget {
   const ProductsDetails({Key? key, required this.prd, required this.index})
@@ -63,6 +66,9 @@ class ProductsDetails extends StatelessWidget {
                     ],
                   ),
                   InkWell(
+                    onTap: () {
+                      Navigator.pop(context, true);
+                    },
                     child: Container(
                       margin: const EdgeInsets.all(10),
                       height: 60,

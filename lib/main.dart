@@ -24,6 +24,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Ennachat Shop',
       theme: ThemeData(
+        primaryColor: Style.primaryColor,
         fontFamily: 'Fredoka',
       ),
       initialRoute: Loading.routeName,

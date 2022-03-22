@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../Providers/cart.dart';
 import '../Models/product.dart';
 import './product_details.dart';
 
@@ -9,12 +12,26 @@ class ProductItem extends StatelessWidget {
   final Product prd;
   final int index;
 
+  Future<void> pushDetails(BuildContext ctx, Cart cart) async {
+    await Navigator.of(ctx)
+        .push(
+      MaterialPageRoute(
+        builder: (_) => ProductsDetails(prd: prd, index: index),
+      ),
+    )
+        .then((value) {
+      if (value == true) {
+        cart.addProduct(prd);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    var cart = Provider.of<Cart>(context);
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) => ProductsDetails(prd: prd, index: index)));
+        pushDetails(context, cart);
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
@@ -34,7 +51,9 @@ class ProductItem extends StatelessWidget {
             ),
             trailing: IconButton(
               icon: const Icon(Icons.shopping_cart),
-              onPressed: () {},
+              onPressed: () {
+                cart.addProduct(prd);
+              },
             ),
             title: Text(
               prd.title,

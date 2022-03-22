@@ -6,6 +6,8 @@ import '../Style/style.dart';
 import '../Widgets/products_overview.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../Providers/products.dart';
+import '../Providers/cart.dart';
+import '../Widgets/Cart_overview.dart';
 
 class AppContainer extends StatefulWidget {
   const AppContainer({Key? key}) : super(key: key);
@@ -22,7 +24,18 @@ class _AppContainerState extends State<AppContainer> {
     Icons.credit_card,
   ];
 
-  int _index = 0;
+  Widget getScreen(int index) {
+    switch (index) {
+      case 0:
+        return const CartOverview();
+      case 2:
+        return const ProductsOverview();
+      default:
+        return const ProductsOverview();
+    }
+  }
+
+  int _index = 2;
   //bool _appMode = false;
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -30,7 +43,14 @@ class _AppContainerState extends State<AppContainer> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => Products())],
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => Products(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Cart(),
+        ),
+      ],
       child: Scaffold(
         key: _scaffoldKey,
         backgroundColor: Style.backgroundColor,
@@ -86,15 +106,19 @@ class _AppContainerState extends State<AppContainer> {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  setState(
+                    () {
+                      _index = 2;
+                      _scaffoldKey.currentState!.openEndDrawer();
+                    },
+                  );
+                },
                 child: ListTile(
-                  leading: IconButton(
-                    icon: FaIcon(
-                      FontAwesomeIcons.store,
-                      color: Style.primaryColor,
-                      size: 35,
-                    ),
-                    onPressed: () {},
+                  leading: FaIcon(
+                    FontAwesomeIcons.store,
+                    color: Style.primaryColor,
+                    size: 35,
                   ),
                   title: const Text(
                     'Shop',
@@ -103,15 +127,19 @@ class _AppContainerState extends State<AppContainer> {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  setState(
+                    () {
+                      _index = 0;
+                      _scaffoldKey.currentState!.openEndDrawer();
+                    },
+                  );
+                },
                 child: ListTile(
-                  leading: IconButton(
-                    icon: Icon(
-                      Icons.shopping_cart,
-                      color: Style.primaryColor,
-                      size: 40,
-                    ),
-                    onPressed: () {},
+                  leading: Icon(
+                    Icons.shopping_cart,
+                    color: Style.primaryColor,
+                    size: 40,
                   ),
                   title: const Text(
                     'Cart',
@@ -120,15 +148,19 @@ class _AppContainerState extends State<AppContainer> {
                 ),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  setState(
+                    () {
+                      _index = 1;
+                      _scaffoldKey.currentState!.openEndDrawer();
+                    },
+                  );
+                },
                 child: ListTile(
-                  leading: IconButton(
-                    icon: Icon(
-                      Icons.credit_card,
-                      color: Style.primaryColor,
-                      size: 40,
-                    ),
-                    onPressed: () {},
+                  leading: Icon(
+                    Icons.credit_card,
+                    color: Style.primaryColor,
+                    size: 40,
                   ),
                   title: const Text(
                     'Orders',
@@ -139,9 +171,13 @@ class _AppContainerState extends State<AppContainer> {
             ],
           ),
         )),
-        body: const ProductsOverview(),
+        body: getScreen(_index),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              _index = 2;
+            });
+          },
           child: const FaIcon(
             FontAwesomeIcons.store,
             color: Colors.white,
