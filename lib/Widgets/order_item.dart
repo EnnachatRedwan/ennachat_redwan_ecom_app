@@ -49,25 +49,26 @@ class _OrderItemState extends State<OrderItem> {
             },
             child: ListTile(
               title: Text(
-                DateFormat("dd/MMMM/yyyy").format(widget.order.date),
-                style: TextStyle(
-                    color: Style.primaryColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
+                DateFormat("dd/MMMM/yyyy hh:mm").format(widget.order.date),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               subtitle: Text(
-                DateFormat("hh:mm").format(widget.order.date),
-                style: const TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-              trailing: Text(
                 '\$${widget.order.totalPrice.toStringAsFixed(2)}',
                 style: const TextStyle(
                     color: Colors.greenAccent,
                     fontSize: 16,
                     fontWeight: FontWeight.bold),
               ),
+              trailing: _isExpanded
+                  ? Icon(
+                      Icons.keyboard_arrow_up_sharp,
+                      color: Style.primaryColor,
+                    )
+                  : Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Style.primaryColor,
+                    ),
             ),
           ),
           if (_isExpanded)
