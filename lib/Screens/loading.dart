@@ -48,7 +48,7 @@ class _LoadingState extends State<Loading> {
                   fontSize: 25,
                   fontWeight: FontWeight.bold),
             ),
-            SpinKitChasingDots(
+            SpinKitRipple(
               color: Style.primaryColor,
               size: 50.0,
             ),
